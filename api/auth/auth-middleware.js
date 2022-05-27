@@ -19,7 +19,8 @@ async function checkUsernameFree(req, res, next) {
     try {
       const [user] = await db('users').where({username: req.body.username}) 
       if(!user){
-        res.status(401).json({
+        next({
+            status:401,
             message: 'invalid credentials'
         })
       } else {
@@ -33,8 +34,9 @@ async function checkUsernameFree(req, res, next) {
 
 function checkPasswordAndUsername(req, res, next) {
     const {username, password} = req.body
-    if(!password.trim() || !username.trim()) {
-          res.status(422).json({
+    if(!password || !username.trim()) {
+          next({
+            status: 422,
             message: "username and password required"
           })
           
