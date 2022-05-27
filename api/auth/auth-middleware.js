@@ -15,6 +15,20 @@ async function checkUsernameFree(req, res, next) {
     }
   }
 
+  function checkPasswordAndUsername(req, res, next) {
+    //next()
+    const {username, password} = req.body.password
+    if(!password || !username.trim()) {
+          res.status(422).json({
+            message: "username and password required"
+          })
+          
+    } else {
+      next()
+    }
+  }
+
   module.exports = {
     checkUsernameFree,
+    checkPasswordAndUsername
   }
