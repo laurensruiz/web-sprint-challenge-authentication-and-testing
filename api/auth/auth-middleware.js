@@ -32,7 +32,6 @@ async function checkUsernameFree(req, res, next) {
   }
 
 function checkPasswordAndUsername(req, res, next) {
-    //next()
     const {username, password} = req.body
     if(!password || !username.trim()) {
           res.status(422).json({
