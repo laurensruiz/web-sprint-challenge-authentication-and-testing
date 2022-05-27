@@ -33,7 +33,7 @@ async function checkUsernameFree(req, res, next) {
 
 function checkPasswordAndUsername(req, res, next) {
     const {username, password} = req.body
-    if(!password && !username.trim()) {
+    if(!password.trim() || !username.trim()) {
           res.status(422).json({
             message: "username and password required"
           })
