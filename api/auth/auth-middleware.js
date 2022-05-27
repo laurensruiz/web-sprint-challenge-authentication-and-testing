@@ -18,7 +18,7 @@ async function checkUsernameFree(req, res, next) {
   async function checkUsernameExists(req, res, next) {
     try {
       const [user] = await db('users').where({username: req.body.username}) 
-      if(user.length == 0){
+      if(typeof user === 'undefined'){
         res.status(401).json({
             message: 'invalid credentials'
         })
