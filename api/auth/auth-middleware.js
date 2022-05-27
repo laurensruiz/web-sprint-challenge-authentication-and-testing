@@ -31,6 +31,7 @@ async function checkUsernameFree(req, res, next) {
       next(err)
     }
   }
+  
 
 function checkPasswordAndUsername(req, res, next) {
     const {username, password} = req.body
