@@ -9,7 +9,7 @@ const {
   checkPasswordAndUsername,
   checkUsernameExists} = require('./auth-middleware')
 
-router.post('/register', checkUsernameFree, checkPasswordAndUsername, async(req, res, next) => {
+router.post('/register', checkPasswordAndUsername, checkUsernameFree, async(req, res, next) => {
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -49,7 +49,7 @@ router.post('/register', checkUsernameFree, checkPasswordAndUsername, async(req,
       }
 });
 
-router.post('/login',checkUsernameExists, checkPasswordAndUsername, (req, res, next) => {
+router.post('/login', checkPasswordAndUsername, checkUsernameExists, (req, res, next) => {
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
